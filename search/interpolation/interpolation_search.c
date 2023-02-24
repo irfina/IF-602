@@ -20,36 +20,43 @@ int interpolationSearch(int arr[], int n, int key)
     while (low <= high && key >= arr[low] && key <= arr[high])
     {
         /* Calculate the nearest posible position of key */
-        int pos =
-            low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low]);
-        if (key > arr[pos])
+        int pos = low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low]);
+        printf("pos: %d\n", pos);
+
+        if (key > arr[pos]) {
+            puts("Masuk IF");
             low = pos + 1;
-        else if (key < arr[pos])
+        }
+        else if (key < arr[pos]) {
+            puts("Masuk ELSE IF");
             high = pos - 1;
-        else /* Found */
+        }
+        else {  /* Found */
+            puts("Masuk ELSE");
             return pos;
+        }
     }
     /* Not found */
     return -1;
 }
 
-int main()
-{
-    int x;
-    int arr[] = {10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47};
-    int n = sizeof(arr) / sizeof(arr[0]);
+// int main()
+// {
+//     int x;
+//     int arr[] = {10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47};
+//     int n = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Array: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    printf("\nEnter the number to be searched: ");
-    scanf("%d", &x); /* Element to be searched */
+//     printf("Array: ");
+//     for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+//     printf("\nEnter the number to be searched: ");
+//     scanf("%d", &x); /* Element to be searched */
 
-    int index = interpolationSearch(arr, n, x);
+//     int index = interpolationSearch(arr, n, x);
 
-    /* If element was found */
-    if (index != -1)
-        printf("Element found at position: %d\n", index);
-    else
-        printf("Element not found.\n");
-    return 0;
-}
+//     /* If element was found */
+//     if (index != -1)
+//         printf("Element found at position: %d\n", index);
+//     else
+//         printf("Element not found.\n");
+//     return 0;
+// }
